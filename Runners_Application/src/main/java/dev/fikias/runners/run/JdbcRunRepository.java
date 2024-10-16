@@ -1,4 +1,4 @@
-package dev.danvega.runnerz.run;
+package dev.fikias.runners.run;
 
 import org.springframework.jdbc.core.simple.JdbcClient;
 import org.springframework.stereotype.Repository;

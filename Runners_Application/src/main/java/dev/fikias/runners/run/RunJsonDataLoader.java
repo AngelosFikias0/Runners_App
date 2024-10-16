@@ -1,4 +1,4 @@
-package dev.danvega.runnerz.run;
+package dev.fikias.runners.run;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;

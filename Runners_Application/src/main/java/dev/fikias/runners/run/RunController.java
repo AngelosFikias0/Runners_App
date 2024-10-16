@@ -1,4 +1,4 @@
-package dev.danvega.runnerz.run;
+package dev.fikias.runners.run;
 
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;

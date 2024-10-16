@@ -1,7 +1,7 @@
-package dev.danvega.runnerz;
+package dev.fikias.runners;
 
-import dev.danvega.runnerz.run.Run;
-import dev.danvega.runnerz.run.RunRepository;
+import dev.fikias.runners.run.Run;
+import dev.fikias.runners.run.RunRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

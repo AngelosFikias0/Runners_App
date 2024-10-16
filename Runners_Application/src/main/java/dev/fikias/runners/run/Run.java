@@ -1,6 +1,5 @@
-package dev.danvega.runnerz.run;
+package dev.fikias.runners.run;
 
-import jakarta.validation.constraints.AssertTrue;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Positive;
 

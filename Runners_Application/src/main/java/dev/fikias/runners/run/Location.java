@@ -1,4 +1,4 @@
-package dev.danvega.runnerz.run;
+package dev.fikias.runners.run;
 
 public enum Location {
     INDOOR,

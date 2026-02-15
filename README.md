@@ -1,109 +1,118 @@
-Run Management API
-==================
+# 🏃 Run Management API (Spring Boot)
 
-This is a Spring Boot-based RESTful API to manage "Run" data, which can be used to store and retrieve information about various runs, such as the title, start and end times, miles covered, and location. The application uses an embedded **H2 database** for storage and provides full CRUD (Create, Read, Update, Delete) functionality.
+> **A robust RESTful microservice built with Spring Boot for tracking athletic performance, featuring automated persistence and H2 database integration.**
 
-Features
---------
+The **Run Management API** provides a structured way to log and analyze physical activity. It leverages the power of Spring Framework's ecosystem to provide a scalable, testable, and high-performance backend with full CRUD capabilities.
 
--   Create, read, update, and delete runs.
--   Access and manage runs via a RESTful API.
--   Use H2 as an in-memory database or persist data to a file.
--   Access H2 console via the browser to view or manipulate database contents.
+---
 
-Prerequisites
--------------
+## 📌 Architecture Overview
 
-To run this project, ensure you have the following installed:
+This application follows the standard **Spring Boot 3-Tier Architecture**, ensuring a clean separation of concerns between web requests and data persistence.
 
--   **Java 17** or higher
--   **Apache Maven** 3.8.1 or higher
 
-Getting Started
----------------
 
-### Clone the Repository
-`git clone https://github.com/your-username/run-management-api.git
-cd run-management-api`
+```text
+       [ Client (Postman/cURL) ]
+                  |
+        (JSON / RESTful API)
+                  v
+       [ REST Controller Layer ]
+        (Request Mapping & Validation)
+                  |
+                  v
+       [ Service / Logic Layer ]
+        (Business Rules & Calculations)
+                  |
+                  v
+       [ Repository Layer (Spring Data) ]
+        (Hibernate / JPA / JDBC)
+                  |
+                  v
+       [ H2 In-Memory Database ]
+```
 
-### Build and Run the Application
+---
 
-To build and run the application, use the following Maven commands:
+## 🚀 Key Features
 
-`mvn clean install`
-# Run the project
-`mvn spring-boot:run`
+* **Full CRUD Lifecycle:** Create, Read, Update, and Delete run records with automated JSON serialization.
+* **H2 Embedded Database:** Lightweight, zero-configuration database setup for development and testing.
+* **Web Console:** Real-time database monitoring via the H2 Web interface.
+* **Flexible Persistence:** Easy switching between in-memory volatile storage and local file persistence.
+* **Validation:** Ensuring data integrity for distance (miles), timing, and location types.
 
-Once the application starts, the REST API will be available at `http://localhost:8080`.
+---
 
-API Endpoints
--------------
+## 🚦 API Endpoints
 
-You can interact with the API using tools like **Postman**, **curl**, or directly from the browser.
+| Method | Endpoint | Description |
+| :--- | :--- | :--- |
+| **GET** | `/api/runs` | Retrieve all recorded runs |
+| **GET** | `/api/runs/{id}` | Get specific run details by ID |
+| **POST** | `/api/runs` | Register a new run |
+| **PUT** | `/api/runs/{id}` | Update existing run data |
+| **DELETE** | `/api/runs/{id}` | Remove a run from the log |
 
-### Run Endpoints
+### Sample POST Payload
+```json
+{
+  "title": "Evening Trail Run",
+  "startedOn": "2024-05-01T18:00:00",
+  "completedOn": "2024-05-01T19:30:00",
+  "miles": 8,
+  "location": "OUTDOOR"
+}
+```
 
-#### Get All Runs
+---
 
--   **Endpoint**: `GET /api/runs`
--   **Description**: Retrieves a list of all runs.
+## 🧰 Technical Stack
 
-#### Get a Run by ID
+* **Framework:** Spring Boot 3.x
+* **Language:** Java 17+
+* **Build Tool:** Maven
+* **Database:** H2 (In-memory/File-based)
+* **Tools:** Spring Data JPA, Hibernate, Jackson (JSON)
 
--   **Endpoint**: `GET /api/runs/{id}`
--   **Description**: Retrieves the details of a specific run by its ID.
+---
 
-#### Create a New Run
+## 🛠️ Installation & Setup
 
--   **Endpoint**: `POST /api/runs`
--   **Description**: Creates a new run.
--   **Payload**:
-- 
-    `{
-      "title": "Morning Run",
-      "startedOn": "2024-05-01T06:00:00",
-      "completedOn": "2024-05-01T08:00:00",
-      "miles": 10,
-      "location": "OUTDOOR"
-    }`
+### Prerequisites
+* **Java 17** or higher
+* **Maven 3.8.1** or higher
 
-#### Update a Run
+### 1️⃣ Clone & Build
+```bash
+git clone [https://github.com/your-username/run-management-api.git](https://github.com/your-username/run-management-api.git)
+cd run-management-api
+mvn clean install
+```
 
--   **Endpoint**: `PUT /api/runs/{id}`
--   **Description**: Updates the details of a specific run.
--   **Payload**: Same as the POST request.
+### 2️⃣ Run the Application
+```bash
+mvn spring-boot:run
+```
 
-#### Delete a Run
+### 3️⃣ Database Access
+View your data in real-time by visiting:
+`http://localhost:8080/h2-console`
+* **JDBC URL:** `jdbc:h2:mem:testdb`
+* **User:** `sa` (No password)
 
--   **Endpoint**: `DELETE /api/runs/{id}`
--   **Description**: Deletes a specific run by its ID.
+---
 
-Database Access
----------------
+## 📈 Engineering Highlights
 
-### H2 Database Console
+* **In-Memory Speed:** Utilizing H2 for rapid prototyping and local testing environments.
+* **RESTful Best Practices:** Implementation of appropriate HTTP status codes (201 Created, 204 No Content) and semantic URL structures.
+* **Configuration Management:** Using `application.properties` to toggle between temporary and persistent storage modes.
 
-The application uses an embedded **H2 database**. You can access the H2 database console via the following URL:
+---
 
--   **URL**: `http://localhost:8080/h2-console`
+## 📄 License
+This project is licensed under the **MIT License**.
 
-#### H2 Console Configuration
-
--   **JDBC URL**: `jdbc:h2:mem:testdb`
--   **Username**: `sa`
--   **Password**: *(leave blank)*
-
-You can manage and view the database data from this web interface.
-
-### Persisting Data to File
-
-By default, the H2 database is in-memory, meaning that all data will be lost once the application is stopped. To persist the data, change the database URL in the `application.properties`:
-
-`spring.datasource.url=jdbc:h2:file:./data/runnerzdb`
-
-This will store the database in a file in the `./data/` directory.
-
-License
--------
-
-This project is licensed under the MIT License. See the LICENSE file for details.
+---
+**Developed by Angelos Fikias** *Building efficient, scalable microservices with Spring Boot.*

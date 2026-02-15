@@ -1,4 +1,4 @@
-# 🏃 Run Management API (Spring Boot)
+# Run Management API (Spring Boot)
 
 > **A robust RESTful microservice built with Spring Boot for tracking athletic performance, featuring automated persistence and H2 database integration.**
 
